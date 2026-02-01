@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores Principais do Projeto */
+  --color-primary: #C92071;
+  --color-secondary: #B5B6F2;
+  --color-tertiary: #991956;
+  --color-discont: #E7FF8D;
+  --color-error: #EE4266;
+  --color-success: #52CA76;
+  --color-warning: #F6AA1C;
+
+  /* Grayscale (Tons de Cinza) */
+  --color-dark-gray: #1F1F1F;
+  --color-dark-gray-2: #474747;
+  --color-dark-gray-3: #666666;
+  --color-light-gray: #8F8F8F;
+  --color-light-gray-2: #CCCCCC;
+  --color-light-gray-3: #F5F5F5;
+  --color-white: #FFFFFF;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px); /* Pequeno movimento para cima */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+}
