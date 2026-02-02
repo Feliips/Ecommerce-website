@@ -1,22 +1,25 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
 import useNavigation from "./hooks/useNavigation";
 import Footer from "./components/Footer";
 
 export default function App() {
   const { activePage, navigateTo } = useNavigation();
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header activePage={activePage} navigateTo={navigateTo} />
+      <Header
+        activePage={activePage}
+        navigateTo={navigateTo}
+        setSearchTerm={setSearchTerm}
+      />
       <main>
-        {/* Lógica de renderização condicional */}
         {activePage === "Home" && <HomePage />}
-        {activePage === "Produtos" && (
-          <div className="p-20 text-center text-2xl">
-            Página de Produtos em construção... 👟
-          </div>
-        )}
+        {activePage === "Produtos" && <ProductPage searchTerm={searchTerm} />}
       </main>
       <Footer />
     </div>

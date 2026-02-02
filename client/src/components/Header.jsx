@@ -2,8 +2,7 @@ import logoHeader from "../assets/logo-header.svg";
 import miniCart from "../assets/mini-cart.svg";
 import { Search } from "lucide-react";
 
-export default function Header({ activePage, navigateTo }) {
-
+export default function Header({ activePage, navigateTo, setSearchTerm }) {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Produtos", path: "/produtos" },
@@ -21,6 +20,7 @@ export default function Header({ activePage, navigateTo }) {
           <input
             type="text"
             placeholder="Pesquisar produto..."
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-gray-100 p-3 pr-12 rounded-lg outline-none focus:ring-2 focus:ring-primary/20"
           />
           <Search
