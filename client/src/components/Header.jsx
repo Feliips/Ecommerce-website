@@ -1,10 +1,8 @@
-import { useState } from "react";
 import logoHeader from "../assets/logo-header.svg";
 import miniCart from "../assets/mini-cart.svg";
 import { Search } from "lucide-react";
 
-export default function Header() {
-  const [activePage, setActivePage] = useState("Home");
+export default function Header({ activePage, navigateTo }) {
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -55,7 +53,7 @@ export default function Header() {
           return (
             <button
               key={link.name}
-              onClick={() => setActivePage(link.name)}
+              onClick={() => navigateTo(link.name)}
               className={`
                 text-base font-medium transition-all duration-300 relative pb-1
                 ${
