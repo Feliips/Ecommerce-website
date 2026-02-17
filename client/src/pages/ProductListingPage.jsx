@@ -1,5 +1,6 @@
 import FilterGroup from "../components/FilterGroup";
 import ProductListing from "../components/ProductListing";
+import Section from "../components/Section";
 import { getProducts } from "../services/productService";
 
 export default function ProductListingPage({ searchTerm }) {
@@ -38,7 +39,6 @@ export default function ProductListingPage({ searchTerm }) {
     },
   ];
 
-  // Filtramos os produtos com base no termo de busca vindo do App.jsx
   const filteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );

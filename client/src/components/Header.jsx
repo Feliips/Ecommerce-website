@@ -1,8 +1,9 @@
+import { Link, NavLink } from "react-router-dom";
 import logoHeader from "../assets/logo-header.svg";
 import miniCart from "../assets/mini-cart.svg";
 import { Search } from "lucide-react";
 
-export default function Header({ activePage, navigateTo, setSearchTerm }) {
+export default function Header({ setSearchTerm }) {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Produtos", path: "/produtos" },
@@ -14,8 +15,9 @@ export default function Header({ activePage, navigateTo, setSearchTerm }) {
     <header className="bg-white shadow-sm px-4 md:px-20 py-6 flex flex-col gap-8">
       {/* Linha Superior: Logo, Busca e Ações */}
       <div className="flex justify-between items-center gap-8">
-        <img src={logoHeader} alt="Digital Store" className="h-8 md:h-10" />
-
+        <Link to="/">
+          <img src={logoHeader} alt="Digital Store" className="h-8 md:h-10" />
+        </Link>
         <div className="relative flex-1 max-w-lg hidden md:block">
           <input
             type="text"
@@ -46,27 +48,24 @@ export default function Header({ activePage, navigateTo, setSearchTerm }) {
         </div>
       </div>
 
-      {/* Linha Inferior: Navegação (Conforme o Figma) */}
+      {/* Linha Inferior: Navegação */}
       <nav className="flex items-center gap-8">
-        {navLinks.map((link) => {
-          const isActive = activePage === link.name;
-          return (
-            <button
-              key={link.name}
-              onClick={() => navigateTo(link.name)}
-              className={`
-                text-base font-medium transition-all duration-300 relative pb-1
-                ${
-                  isActive
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-dark-gray-2 hover:text-primary"
-                }
-              `}
-            >
-              {link.name}
-            </button>
-          );
-        })}
+        {navLinks.map((link) => (
+          <NavLink
+            key={link.name}
+            to={link.path}
+            className={({ isActive }) => `
+              text-base font-medium transition-all duration-300 relative pb-1
+              ${
+                isActive
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-dark-gray-2 hover:text-primary"
+              }
+            `}
+          >
+            {link.name}
+          </NavLink>
+        ))}
       </nav>
     </header>
   );

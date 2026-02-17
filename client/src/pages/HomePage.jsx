@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import api from "../services/api";
 import Hero from "../components/Hero";
 import FeaturedCollections from "../components/FeaturedCollections";
@@ -9,7 +10,6 @@ import { normalizeText } from "../services/textUtils";
 export default function HomePage() {
   const [products, setProducts] = useState([]);
 
-  // Inicialize as coleções diretamente aqui
   const [collections, setCollections] = useState([
     {
       title: "Novo drop Supreme",
@@ -68,12 +68,12 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-gray-800">
             {filter === "" ? "Produtos em alta" : `Resultados para: ${filter}`}
           </h2>
-          <button
-            onClick={() => setFilter("")}
-            className="text-primary hover:underline"
+          <Link
+            to="/produtos"
+            className="text-primary hover:underline flex items-center gap-2"
           >
-            Ver todos →
-          </button>
+            Ver todos <span className="text-xl">→</span>
+          </Link>
         </div>
 
         <div

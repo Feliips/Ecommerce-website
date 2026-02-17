@@ -1,5 +1,3 @@
-// client/src/services/productService.js
-
 const products = [
   {
     id: 1,
